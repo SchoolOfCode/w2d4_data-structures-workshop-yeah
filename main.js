@@ -152,5 +152,39 @@ const inventory = [
 const receipt = [];
 
 //Task 1: I Don't Want To Sell This Any More
-let isUnhealtyFood = inventory.filter((item) => item.isHealthy === true);
-console.log(isUnhealtyFood);
+let isHealtyFood = inventory.filter((item) => item.isHealthy === true);
+//console.log(ishealtyFood);
+
+// ## Section 2
+// ### Task 1: No More Junk Food!
+
+// A trolley has been taken to the checkout but the customer noticed that some junk food items have mysteriously been added to their trolley. Remove all items that are not healthy.
+
+// let unhealthyID = inventory.filter(function (item) {
+//   if (item.isHealthy === false) {
+//     return item.id;
+//   }
+// });
+let isUnhealtyFood = inventory.filter((item) => item.isHealthy === false);
+
+let unhealthyID = isUnhealtyFood.map((item) => item.id);
+let trolleyID = trolley.map((item) => item.id);
+
+console.log("Junk food " + unhealthyID);
+console.log("Trolley id " + trolleyID);
+
+// for (let i = 0; i < trolley.length; i++) {
+//   if (trolley.includes(unhealthyID)) {
+//     trolley.pop(unhealthyID);
+//     console.log(trolley);
+//   }
+// }
+// let healthy = [];
+// for (let i = 0; i < trolleyID.length; i++) {
+//   for (let j = trolleyID.length; j > trolleyID.length; j--)
+//     if (trolleyID === unhealthyID) {
+//       healthy.push(trolley[i]);
+//     }
+// }
+
+console.log(trolley.length);
