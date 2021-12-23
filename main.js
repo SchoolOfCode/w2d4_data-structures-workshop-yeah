@@ -173,18 +173,21 @@ let trolleyID = trolley.map((item) => item.id);
 console.log("Junk food " + unhealthyID);
 console.log("Trolley id " + trolleyID);
 
-// for (let i = 0; i < trolley.length; i++) {
-//   if (trolley.includes(unhealthyID)) {
-//     trolley.pop(unhealthyID);
-//     console.log(trolley);
-//   }
-// }
+for (var i = trolleyID.length; i >= 0; i--) {
+  for (var j = 0; j < trolleyID.length; j++) {
+    if (trolleyID[i] && trolleyID[i] === unhealthyID[j]) {
+      trolleyID.splice(i, 1);
+    }
+  }
+}
+console.log(trolleyID.length);
+
 // let healthy = [];
 // for (let i = 0; i < trolleyID.length; i++) {
-//   for (let j = trolleyID.length; j > trolleyID.length; j--)
-//     if (trolleyID === unhealthyID) {
-//       healthy.push(trolley[i]);
+//   for (let j = trolleyID.length; j > 0; j--) {
+//     if (trolleyID[i] !== unhealthyID[j] && !healthy.includes(trolleyID[i])) {
+//       healthy.push(trolleyID[i]);
 //     }
+//   }
 // }
-
-console.log(trolley.length);
+//console.log(healthy.length + healthy);
