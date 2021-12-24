@@ -153,34 +153,23 @@ const receipt = [];
 
 //Task 1: I Don't Want To Sell This Any More
 let isHealtyFood = inventory.filter((item) => item.isHealthy === true);
-console.log(isHealtyFood);
+console.log(isHealtyFood.length);
 
 // ## Section 2
 // ### Task 1: No More Junk Food!
 
 // A trolley has been taken to the checkout but the customer noticed that some junk food items have mysteriously been added to their trolley. Remove all items that are not healthy.
 
-// let unhealthyID = inventory.filter(function (item) {
-//   if (item.isHealthy === false) {
-//     return item.id;
-//   }
-// });
 let isUnhealtyFood = inventory.filter((item) => item.isHealthy === false);
 
-let unhealthyID = isUnhealtyFood.map((item) => item.id);
-let trolleyID = trolley.map((item) => item.id);
-
-console.log("Junk food " + unhealthyID);
-console.log("Trolley id " + trolleyID);
-
-for (var i = trolleyID.length; i >= 0; i--) {
-  for (var j = 0; j < trolleyID.length; j++) {
-    if (trolleyID[i] && trolleyID[i] === unhealthyID[j]) {
-      trolleyID.splice(i, 1);
+for (let i = 0; i < trolley.length; i++) {
+  for (let j = 0; j < isUnhealtyFood.length; j++) {
+    if (trolley[i].id === isUnhealtyFood[j].id) {
+      trolley.splice(i, 1);
     }
   }
 }
-console.log(trolleyID);
+console.log(trolley);
 
 //let healthy = [];
 // for (let i = 0; i < trolleyID.length; i++) {
@@ -195,10 +184,13 @@ console.log(trolleyID);
 //### Task 2: Incorrect Item In The Bagging Area
 
 // The customer is now at the point they're running through the self checkout.  Inside this cart there are several items.  Unfortunately, some items in the cart have been recalled and are no longer available.  Remove all items from the cart that are marked for recall
-let recalledItems = inventory.filter((item) => item.recalled === true);
-console.log(recalledItems);
+let recalledItems = inventory.filter((item) => item.recalled === false);
+//console.log(recalledItems);
+let freshItems = inventory.filter((item) => item.recalled === true);
+//console.log(freshItems);
 
-let result = trolley.filter(
-  (v, i, recalledItems) => recalledItems.findIndex((t) => t.id === v.id) === i
-);
-console.log("result " + result);
+let uniqueResults = trolley.filter(function (obj) {
+  return !freshItems.some(function (obj2) {
+    return obj.id == obj2.id;
+  });
+});
