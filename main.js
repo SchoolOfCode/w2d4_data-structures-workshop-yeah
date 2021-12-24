@@ -153,7 +153,7 @@ const receipt = [];
 
 //Task 1: I Don't Want To Sell This Any More
 let isHealtyFood = inventory.filter((item) => item.isHealthy === true);
-//console.log(ishealtyFood);
+console.log(isHealtyFood);
 
 // ## Section 2
 // ### Task 1: No More Junk Food!
@@ -180,9 +180,9 @@ for (var i = trolleyID.length; i >= 0; i--) {
     }
   }
 }
-console.log(trolleyID.length);
+console.log(trolleyID);
 
-// let healthy = [];
+//let healthy = [];
 // for (let i = 0; i < trolleyID.length; i++) {
 //   for (let j = trolleyID.length; j > 0; j--) {
 //     if (trolleyID[i] !== unhealthyID[j] && !healthy.includes(trolleyID[i])) {
@@ -190,4 +190,15 @@ console.log(trolleyID.length);
 //     }
 //   }
 // }
-//console.log(healthy.length + healthy);
+// console.log(healthy.length + healthy);
+
+//### Task 2: Incorrect Item In The Bagging Area
+
+// The customer is now at the point they're running through the self checkout.  Inside this cart there are several items.  Unfortunately, some items in the cart have been recalled and are no longer available.  Remove all items from the cart that are marked for recall
+let recalledItems = inventory.filter((item) => item.recalled === true);
+console.log(recalledItems);
+
+let result = trolley.filter(
+  (v, i, recalledItems) => recalledItems.findIndex((t) => t.id === v.id) === i
+);
+console.log("result " + result);
