@@ -149,8 +149,6 @@ const inventory = [
   },
 ];
 
-const receipt = [];
-
 //Task 1: I Don't Want To Sell This Any More
 let isHealtyFood = inventory.filter((item) => item.isHealthy === true);
 console.log(isHealtyFood.length);
@@ -160,37 +158,24 @@ console.log(isHealtyFood.length);
 
 // A trolley has been taken to the checkout but the customer noticed that some junk food items have mysteriously been added to their trolley. Remove all items that are not healthy.
 
-let isUnhealtyFood = inventory.filter((item) => item.isHealthy === false);
+// let isUnhealtyFood = inventory.filter((item) => item.isHealthy === false);
+// for (let i = 0; i < trolley.length; i++) {
+//   for (let j = 0; j < isUnhealtyFood.length; j++) {
+//     if (trolley[i].id === isUnhealtyFood[j].id) {
+//       trolley.splice(i, 1);
+//     }
+//   }
+// }
+// console.log(trolley);
 
+//### Task 2: Incorrect Item In The Bagging Area
+// The customer is now at the point they're running through the self checkout.  Inside this cart there are several items.  Unfortunately, some items in the cart have been recalled and are no longer available.  Remove all items from the cart that are marked for recall
+let recalledItem = inventory.filter((item) => item.recalled === true);
 for (let i = 0; i < trolley.length; i++) {
-  for (let j = 0; j < isUnhealtyFood.length; j++) {
-    if (trolley[i].id === isUnhealtyFood[j].id) {
+  for (let j = 0; j < recalledItem.length; j++) {
+    if (trolley[i].id === recalledItem[j].id) {
       trolley.splice(i, 1);
     }
   }
 }
-console.log(trolley);
-
-//let healthy = [];
-// for (let i = 0; i < trolleyID.length; i++) {
-//   for (let j = trolleyID.length; j > 0; j--) {
-//     if (trolleyID[i] !== unhealthyID[j] && !healthy.includes(trolleyID[i])) {
-//       healthy.push(trolleyID[i]);
-//     }
-//   }
-// }
-// console.log(healthy.length + healthy);
-
-//### Task 2: Incorrect Item In The Bagging Area
-
-// The customer is now at the point they're running through the self checkout.  Inside this cart there are several items.  Unfortunately, some items in the cart have been recalled and are no longer available.  Remove all items from the cart that are marked for recall
-let recalledItems = inventory.filter((item) => item.recalled === false);
-//console.log(recalledItems);
-let freshItems = inventory.filter((item) => item.recalled === true);
-//console.log(freshItems);
-
-let uniqueResults = trolley.filter(function (obj) {
-  return !freshItems.some(function (obj2) {
-    return obj.id == obj2.id;
-  });
-});
+console.log(trolley.length);
