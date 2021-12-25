@@ -186,3 +186,17 @@ let receipt = trolley.map((itm) => ({
   ...inventory.find((elm) => elm.id == itm.id),
 }));
 console.log(receipt);
+
+// Task 4 Bulk Buy Discount
+// The store has an offer on! If you buy 3 or more items that are the same, you can get 25% off! Build a function to do that from the above receipt.  Add a discount to all elements, calculating the correct discount.
+
+let bulkBuy = trolley.filter((item) => item.quantity >= 3);
+console.log(bulkBuy);
+for (let i = 0; i < receipt.length; i++) {
+  for (let j = 0; j < bulkBuy.length; j++) {
+    if (receipt[i].id === bulkBuy[j].id) {
+      receipt[i].price = receipt[i].price * 0.75;
+    }
+  }
+}
+console.log(receipt);
