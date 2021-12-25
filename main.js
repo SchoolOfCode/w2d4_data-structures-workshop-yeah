@@ -192,11 +192,44 @@ console.log(receipt);
 
 let bulkBuy = trolley.filter((item) => item.quantity >= 3);
 console.log(bulkBuy);
+let discountedReceipt = receipt;
+
 for (let i = 0; i < receipt.length; i++) {
   for (let j = 0; j < bulkBuy.length; j++) {
     if (receipt[i].id === bulkBuy[j].id) {
-      receipt[i].price = receipt[i].price * 0.75;
+      discountedReceipt[i].price = receipt[i].price * 0.75;
     }
   }
 }
 console.log(receipt);
+
+let input = document.querySelector(".full-total");
+for (let i = 0; i < receipt.length; i++) {
+  input.innerText +=
+    " name: " +
+    receipt[i].name +
+    " Quantity: " +
+    receipt[i].quantity +
+    " Price: " +
+    receipt[i].price;
+}
+
+let dsinput = document.querySelector(".discount-total");
+for (let i = 0; i < discountedReceipt.length; i++) {
+  dsinput.innerText +=
+    " name: " +
+    receipt[i].name +
+    " Quantity: " +
+    receipt[i].quantity +
+    " Price: " +
+    receipt[i].price;
+}
+
+let inputp = document.querySelector(".price-paid");
+for (let i = 0; i < discountedReceipt.length; i++) {
+  inputp.innerText +=
+    " Price paid: " +
+    discountedReceipt[i].name +
+    " " +
+    discountedReceipt[i].price;
+}
