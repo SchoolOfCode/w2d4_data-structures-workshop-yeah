@@ -178,4 +178,11 @@ for (let i = 0; i < trolley.length; i++) {
     }
   }
 }
-console.log(trolley.length);
+console.log(trolley);
+
+//Task 3: Can I have a receipt?
+let receipt = trolley.map((itm) => ({
+  ...itm,
+  ...inventory.find((elm) => elm.id == itm.id),
+}));
+console.log(receipt);
